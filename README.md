@@ -15,6 +15,7 @@ git clone https://github.com/golfer007/git-deploy.git .
 * setup apache/nginx/other web-server site (ex. deploy.some.site) to /var/www/deploy 
 
 ## Setup
+* rename deploy-config.example.php to deploy-config.php
 * fill deploy config with your repos
 ```php
 $repos = array(
