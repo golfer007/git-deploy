@@ -4,11 +4,12 @@
  *
  * Each repos will be an entry in the array in the following way:
  * 'repo name' => array( // Required. This is the repo name
- * 		'path'   => '/path/to/local/repo/', // Required. The local path to your code.
- * 		'branch' => 'the_desired_deploy_branch', // Required. Deployment branch.
- *		'remote' => 'git_remote_repo', // Optional. Defaults to 'origin'
- * 		'post_deploy' => 'callback' // Optional callback function for whatever.
- * 		'secret' => '' // Optional. The secret specified in the webhook settings (Only works with GitHub).
+ *      'branch name' => array(
+ * 		   'path'   => '/path/to/local/repo/', // Required. The local path to your code.
+ *		    'remote' => 'git_remote_repo', // Optional. Defaults to 'origin'
+ * 		   'post_deploy' => 'callback' // Optional callback function for whatever.
+ * 		   'secret' => '' // Optional. The secret specified in the webhook settings (Only works with GitHub).
+ *      )
  * )
  *
  * You can put as many of these together as you want, each one is simply
@@ -29,10 +30,11 @@
  */
 $repos = array(
 	/*'examplerepo' => array(
-		'branch' => 'master',
-		'remote' => 'origin',
-		'path' => '/path/to/local/code/',
-		'secret' => ''
+		'master' => array(
+            'remote' => 'origin',
+            'path' => '/path/to/local/code/',
+            'secret' => ''
+        )
 	)*/
 );
 
