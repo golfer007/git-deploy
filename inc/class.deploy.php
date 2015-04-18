@@ -73,7 +73,7 @@ abstract class Deploy {
 		);
 		$repo = array_merge( $defaults, $repo );
 
-		self::$repos[ $name ] = $repo;
+		self::$repos[ $name ][ $repo['branch'] ] = $repo;
 	}
 
 	/**
@@ -227,5 +227,8 @@ abstract class Deploy {
 }
 
 // Registers all of our repos with the Deploy class
-foreach ( $repos as $name => $repo )
-	Deploy::register_repo( $name, $repo );
+foreach ( $repos as $name => $repo ) {
+    foreach ($repo as $repo2) {
+        Deploy::register_repo( $name, $repo2 );
+    }
+}
