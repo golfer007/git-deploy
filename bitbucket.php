@@ -21,13 +21,19 @@ class BitBucket_Deploy extends Deploy {
 	 */
 	function __construct( $payload ) {
 		$payload = json_decode( stripslashes( $_POST['payload'] ), true );
+
 		$name = $payload['repository']['name'];
+
 		$this->log( $payload['commits'][0]['branch'] );
-		if ( isset( parent::$repos[ $name ] ) && parent::$repos[ $name ]['branch'] === $payload['commits'][0]['branch'] ) {
-			$data = parent::$repos[ $name ];
+
+		if ( isset( parent::$repos[ $name ] ) && isset( parent::$repos[ $name ][ $payload['commits'][0]['branch'] ] ) ) {
+			$data = parent::$repos[ $name ][$payload['commits'][0]['branch']];
 			$data['commit'] = $payload['commits'][0]['node'];
+
 			parent::__construct( $name, $data );
-		}
+		} else {
+            $this->log( "ropo : {$name} or branch : {$payload['commits'][0]['branch']} dosen't config" , 'ERROR');
+        }
 	}
 }
 // Start the deploy attempt.

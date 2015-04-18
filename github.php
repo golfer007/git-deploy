@@ -24,14 +24,22 @@ class GitHub_Deploy extends Deploy {
 	 */
 	function __construct( $_payload, $headers ) {
 		$payload = json_decode( $_payload );
+
 		$name = $payload->repository->name;
+
 		$branch = basename( $payload->ref );
+
 		$commit = substr( $payload->commits[0]->id, 0, 12 );
-		if ( isset( parent::$repos[ $name ] ) && parent::$repos[ $name ]['branch'] === $branch ) {
-			$data = parent::$repos[ $name ];
+
+		if ( isset( parent::$repos[ $name ] ) && isset( parent::$repos[ $name ][ $branch ] ) ) {
+
+			$data = parent::$repos[ $name ][ $branch ];
 			$data['commit'] = $commit;
+
 			parent::__construct( $name, $data, $_payload, $headers );
-		}
+		} else {
+            $this->log( "ropo : {$name} or branch : {$branch} dosen't config" , 'ERROR');
+        }
 	}
 }
 
