@@ -10,7 +10,7 @@ cd /var/www/deploy
 ```
 * clone this repo
 ```bash
-git clone https://github.com/lkwdwrd/git-deploy.git .
+git clone https://github.com/golfer007/git-deploy.git .
 ```
 * setup apache/nginx/other web-server site (ex. deploy.some.site) to /var/www/deploy 
 
@@ -18,15 +18,27 @@ git clone https://github.com/lkwdwrd/git-deploy.git .
 * fill deploy config with your repos
 ```php
 $repos = array(
-    'prism-code-highlighting' => array(
-        'branch' => 'master',
-        'path' => '/home/usr/example/wpcopilot.net/wp-content/plugins/prism-code-highlighting/'
-    ),
-    'another-plugin' => array(
-        'branch' => 'deploy',
-        'remote' => 'bbremote',
-        'path' => '/home/usr/example/wpcopilot.net/wp-content/plugins/another-plugin/'
-    )
+    'examplerepo' => array(
+		'master' => array(
+            'branch' => 'master',
+            'path' => '/path/to/local/master/code/'
+        ),
+		'develop' => array(
+            'branch' => 'develop',
+            'path' => '/path/to/local/develop/code/'
+        )
+	),
+    
+    'examplerepo2' => array(
+		'master' => array(
+            'branch' => 'master',
+            'path' => '/path/to/local/master/code/'
+        ),
+		'develop' => array(
+            'branch' => 'develop',
+            'path' => '/path/to/local/develop/code/'
+        )
+	)
 );
 ```
 * setup GitHub/Bitbucket POST hooks
@@ -45,5 +57,5 @@ More: https://confluence.atlassian.com/pages/viewpage.action?pageId=271943168
 ## Usage
 * commit and push 
 
-# More information
+# Thank You
 http://lkwdwrd.com/git-auto-deployment/
