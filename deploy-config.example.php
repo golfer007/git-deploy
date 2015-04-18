@@ -4,13 +4,14 @@
  *
  * Each repos will be an entry in the array in the following way:
  * 'repo name' => array( // Required. This is the repo name
- * 		'path' 	 => '/path/to/local/repo/' // Required. The local path to your code.
+ * 		'path'   => '/path/to/local/repo/', // Required. The local path to your code.
  * 		'branch' => 'the_desired_deploy_branch', // Required. Deployment branch.
  *		'remote' => 'git_remote_repo', // Optional. Defaults to 'origin'
  * 		'post_deploy' => 'callback' // Optional callback function for whatever.
+ * 		'secret' => '' // Optional. The secret specified in the webhook settings (Only works with GitHub).
  * )
  *
- * You can put as many of these together as you want, each one is simply 
+ * You can put as many of these together as you want, each one is simply
  * another entry in the $repos array. To set up a deploy create a deploy key
  * for your repo on github or bitbucket. You can generate multiple deploy keys
  * for multiple repos.
@@ -27,55 +28,18 @@
  * other configuration you may need to do for the newly deployed code.
  */
 $repos = array(
-    'nawattapon.com' => array(
-		'branch' => 'develop',
-		'remote' => 'origin',
-		'path' => '/home1/devlism/htdocs/nawattapon.com/develop/wp-content/'
-	),
-	'nawattapon.com' => array(
+	/*'examplerepo' => array(
 		'branch' => 'master',
 		'remote' => 'origin',
-		'path' => '/home1/devlism/htdocs/nawattapon.com/production/wp-content/'
-	),
-
-    'KiddeeStudio.com' => array(
-		'branch' => 'develop',
-		'remote' => 'origin',
-		'path' => '/home1/devlism/htdocs/kiddeestudio.com/develop/wp-content/'
-	),
-	'KiddeeStudio.com' => array(
-		'branch' => 'master',
-		'remote' => 'origin',
-		'path' => '/home1/devlism/htdocs/kiddeestudio.com/production/wp-content/'
-	),
-
-	'WeShare Web' => array(
-		'branch' => 'develop',
-		'remote' => 'origin',
-		'path' => '/home1/devlism/htdocs/weshareable.com/develop/'
-	),
-	'WeShare Web' => array(
-		'branch' => 'testing',
-		'remote' => 'origin',
-		'path' => '/home1/devlism/htdocs/weshareable.com/testing/'
-	),
-    'WeShare Web' => array(
-		'branch' => 'master',
-		'remote' => 'origin',
-		'path' => '/home1/devlism/htdocs/weshareable.com/production/'
-	),
-
-    'Freelance - Lopburistrach.com' => array(
-		'branch' => 'develop',
-		'remote' => 'origin',
-		'path' => '/home1/devlism/htdocs/kiddeestudio.com.demo/lopburistrach/'
-	),
+		'path' => '/path/to/local/code/',
+		'secret' => ''
+	)*/
 );
 
 /**
  * Sets the deploy log directory
  */
-define( 'DEPLOY_LOG_DIR', dirname( __FILE__ ) . '/logs' );
+define( 'DEPLOY_LOG_DIR', dirname( __FILE__ ) );
 
 /* Do not edit below this line */
 require_once 'inc/class.deploy.php';
